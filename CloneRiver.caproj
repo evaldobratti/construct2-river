@@ -84,19 +84,19 @@
             </behaviors>
             <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="501426468301056" speed="5">
-                    <frame duration="1" hotspotX="0.493333" hotspotY="0.494949" original-source="C:\Users\Davi Gritz\Desktop\Construct2\Sprites\Space shooter\playerShip1_blue.png">
-                        <image-point name="LeftCannon" x="0.906667" y="0.494949" />
-                        <image-point name="RightCannon" x="0.0933333" y="0.50505" />
-                        <image-point name="Front" x="0.96" y="0.494949" />
+                    <frame duration="1" hotspotX="0.493333" hotspotY="0.50505" original-source="C:\Users\Davi Gritz\Desktop\Construct2\Sprites\Space shooter\playerShip1_blue.png">
+                        <image-point name="LeftCannon" x="0.493333" y="0.0909091" />
+                        <image-point name="RightCannon" x="0.506667" y="0.909091" />
+                        <image-point name="Front" x="0.973333" y="0.484848" />
                         <collision-poly>
-                            <point x="0.6" y="0.30303" />
-                            <point x="1" y="0.494949" />
-                            <point x="0.6" y="0.69697" />
-                            <point x="0.506667" y="0.989899" />
-                            <point x="0.186667" y="0.858586" />
-                            <point x="0" y="0.494949" />
-                            <point x="0.186667" y="0.141414" />
-                            <point x="0.506667" y="0.010101" />
+                            <point x="0.30303" y="0.4" />
+                            <point x="0.494949" y="0" />
+                            <point x="0.69697" y="0.4" />
+                            <point x="0.989899" y="0.493333" />
+                            <point x="0.858586" y="0.813333" />
+                            <point x="0.494949" y="1" />
+                            <point x="0.141414" y="0.813333" />
+                            <point x="0.010101" y="0.493333" />
                         </collision-poly>
                     </frame>
                 </animation>
@@ -891,7 +891,7 @@
             <plugin id="Sprite" />
             <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="6776576323201506" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Davi Gritz\Desktop\AJUDA.png">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Davi Gritz\Desktop\HELP.png">
                         <collision-poly>
                             <point x="0.026699" y="0.141026" />
                             <point x="0.970874" y="0.153846" />
@@ -1203,21 +1203,6 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="txtExit" sid="766271189364808">
-            <plugin id="Sprite" />
-            <animation-folder>
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="2422088333417847" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Davi Gritz\Desktop\exit.png">
-                        <collision-poly>
-                            <point x="0.5" y="0.32" />
-                            <point x="0.631429" y="0.5" />
-                            <point x="0.5" y="0.68" />
-                            <point x="0.345714" y="0.5" />
-                        </collision-poly>
-                    </frame>
-                </animation>
-            </animation-folder>
-        </object-type>
         <object-type name="Mouse" sid="3375928837934919">
             <plugin id="Mouse" />
         </object-type>
@@ -1225,6 +1210,25 @@
             <plugin id="Sprite" />
             <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="8946201544463798" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Davi Gritz\Desktop\back.png">
+                        <collision-poly>
+                            <point x="0.122857" y="0.43" />
+                            <point x="0.5" y="0.35" />
+                            <point x="0.908571" y="0.32" />
+                            <point x="0.974286" y="0.5" />
+                            <point x="0.88" y="0.58" />
+                            <point x="0.5" y="0.65" />
+                            <point x="0.108571" y="0.62" />
+                            <point x="0.02" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="back_menu" sid="4321648332885603">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="1860350482302" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Davi Gritz\Desktop\back.png">
                         <collision-poly>
                             <point x="0.122857" y="0.43" />
@@ -1277,11 +1281,17 @@
                 </behavior-type>
             </behaviors>
         </family>
+        <family name="Enemies" plugin-id="Sprite" sid="5648180901635346">
+            <members>
+                <member>Enemy</member>
+                <member>Enemy2</member>
+            </members>
+        </family>
     </families>
     <layout-folder>
-        <layout>Game.xml</layout>
-        <layout>Menu.xml</layout>
         <layout>Splash.xml</layout>
+        <layout>Menu.xml</layout>
+        <layout>Game.xml</layout>
         <layout>Help.xml</layout>
         <layout>Congratulation.xml</layout>
     </layout-folder>
@@ -1293,9 +1303,9 @@
         <event-sheet>EventCongratulation.xml</event-sheet>
     </event-folder>
     <global-instances>
-        <global-instance type="Keyboard" uid="1" />
-        <global-instance type="Function" uid="18" />
-        <global-instance type="Audio" uid="33">
+        <global-instance type="Keyboard" uid="18" />
+        <global-instance type="Function" uid="33" />
+        <global-instance type="Audio" uid="48">
             <properties>
                 <timescale-audio>Off</timescale-audio>
                 <saveload>All</saveload>

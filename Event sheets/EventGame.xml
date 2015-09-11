@@ -63,13 +63,13 @@
                 <event-block sid="5325759449713043">
                     <conditions>
                         <condition behavior="LineOfSight" id="0" name="Has LOS to object" sid="614978083253114" type="MissilePlayer">
-                            <param id="0" name="Object">Enemy</param>
+                            <param id="0" name="Object">Enemies</param>
                         </condition>
                     </conditions>
                     <actions>
                         <action id="-22" name="Set angle toward position" sid="8816484317421981" type="MissilePlayer">
-                            <param id="0" name="X">Enemy.X</param>
-                            <param id="1" name="Y">Enemy.Y</param>
+                            <param id="0" name="X">Enemies.X</param>
+                            <param id="1" name="Y">Enemies.Y</param>
                         </action>
                     </actions>
                 </event-block>
@@ -133,11 +133,11 @@
         <event-block sid="1235913164183942">
             <conditions>
                 <condition id="0" name="On collision with another object" sid="9592638911131488" type="Player">
-                    <param id="0" name="Object">Enemy</param>
+                    <param id="0" name="Object">Enemies</param>
                 </condition>
             </conditions>
             <actions>
-                <action id="-9" name="Destroy" sid="7585595010807138" type="Enemy" />
+                <action id="-9" name="Destroy" sid="7585595010807138" type="Enemies" />
                 <action id="-9" name="Destroy" sid="5753657907473727" type="Player" />
             </actions>
         </event-block>
@@ -150,7 +150,7 @@
                 </condition>
             </conditions>
             <actions>
-                <action id="7" name="Set mirrored" sid="6791910344277682" type="Enemy">
+                <action id="7" name="Set mirrored" sid="6791910344277682" type="Enemies">
                     <param id="0" name="State">0</param>
                 </action>
             </actions>
@@ -164,7 +164,7 @@
                 </condition>
             </conditions>
             <actions>
-                <action id="7" name="Set mirrored" sid="250954041368288" type="Enemy">
+                <action id="7" name="Set mirrored" sid="250954041368288" type="Enemies">
                     <param id="0" name="State">1</param>
                 </action>
             </actions>
@@ -220,18 +220,18 @@
         </event-block>
         <event-block sid="9075108248891146">
             <conditions>
-                <condition id="0" name="On collision with another object" sid="4609330791891878" type="Enemy">
+                <condition id="0" name="On collision with another object" sid="4609330791891878" type="Enemies">
                     <param id="0" name="Object">Rocket</param>
                 </condition>
             </conditions>
             <actions>
-                <action id="-9" name="Destroy" sid="216296040042217" type="Enemy" />
+                <action id="-9" name="Destroy" sid="216296040042217" type="Enemies" />
                 <action id="-9" name="Destroy" sid="7942786661485641" type="Rocket" />
                 <action id="-3" name="Create object" sid="117014299457049" type="System">
                     <param id="0" name="Object to create">ExplosionUnits</param>
                     <param id="1" name="Layer">&quot;Objects&quot;</param>
-                    <param id="2" name="X">Enemy.X</param>
-                    <param id="3" name="Y">Enemy.Y</param>
+                    <param id="2" name="X">Enemies.X</param>
+                    <param id="3" name="Y">Enemies.Y</param>
                 </action>
             </actions>
         </event-block>

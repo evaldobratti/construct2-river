@@ -10,16 +10,10 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <display name="HTML5" />
     </configurations>
     <open-tabs>
-        <layout order="0">Splash</layout>
-        <layout active="1" order="2">Game</layout>
-        <layout order="4">Menu</layout>
-        <layout order="6">Help</layout>
-        <layout order="8">Congratulation</layout>
-        <event-sheet order="1">EventSplash</event-sheet>
-        <event-sheet order="3">EventGame</event-sheet>
-        <event-sheet order="5">EventMenu</event-sheet>
-        <event-sheet order="7">EventHelp</event-sheet>
-        <event-sheet order="9">EventCongratulation</event-sheet>
+        <layout order="2">Game</layout>
+        <layout order="3">Congratulation</layout>
+        <event-sheet active="1" order="1">EventGame</event-sheet>
+        <event-sheet order="4">EventCongratulation</event-sheet>
     </open-tabs>
     <properties>
         <property expanded="1" name="About" />
@@ -27,17 +21,18 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <property expanded="1" name="Window Size" />
         <property expanded="1" name="Configuration Settings" />
     </properties>
-    <families-expanded root="0">
-        <family expanded="1" name="FallenObjects" />
-        <family expanded="1" name="Map" />
+    <families-expanded root="1">
+        <family expanded="0" name="FallenObjects" />
+        <family expanded="0" name="Map" />
         <family expanded="0" name="Rocket" />
-        <family expanded="1" name="Powerups" />
+        <family expanded="0" name="Powerups" />
+        <family expanded="0" name="Enemies" />
     </families-expanded>
     <folders-expanded>
         <folder expanded="1" path="object-folder/" />
         <folder expanded="1" path="object-folder/scenario-boxes/" />
-        <folder expanded="1" path="layout-folder/" />
-        <folder expanded="1" path="event-folder/" />
+        <folder expanded="0" path="layout-folder/" />
+        <folder expanded="0" path="event-folder/" />
         <folder expanded="1" path="file-folder/" />
         <folder expanded="1" path="sound-folder/" />
         <folder expanded="1" path="music-folder/" />
@@ -84,7 +79,7 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <folder expanded="1" path="animation-folder/Sprite19/" />
         <folder expanded="1" path="animation-folder/txtPlay/" />
         <folder expanded="1" path="animation-folder/txtInstruction/" />
-        <folder expanded="1" path="animation-folder/txtExit/" />
         <folder expanded="1" path="animation-folder/back/" />
+        <folder expanded="1" path="animation-folder/back_menu/" />
     </folders-expanded>
 </c2uistate>
