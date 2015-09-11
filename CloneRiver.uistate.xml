@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2uistate>
+    <!--This is a UI state file - its content describes the user interface settings when the project was last open.
+It is entirely optional and the project will load without it.  If you are placing the project under source control,
+you probably do not want to add any .uistate.xml files to the repository.-->
+    <configurations>
+        <active>
+            <configuration name="HTML5" />
+        </active>
+        <display name="HTML5" />
+    </configurations>
+    <open-tabs>
+        <layout order="0">Splash</layout>
+        <layout active="1" order="2">Game</layout>
+        <layout order="4">Menu</layout>
+        <layout order="6">Help</layout>
+        <layout order="8">Congratulation</layout>
+        <event-sheet order="1">EventSplash</event-sheet>
+        <event-sheet order="3">EventGame</event-sheet>
+        <event-sheet order="5">EventMenu</event-sheet>
+        <event-sheet order="7">EventHelp</event-sheet>
+        <event-sheet order="9">EventCongratulation</event-sheet>
+    </open-tabs>
+    <properties>
+        <property expanded="1" name="About" />
+        <property expanded="1" name="Project settings" />
+        <property expanded="1" name="Window Size" />
+        <property expanded="1" name="Configuration Settings" />
+    </properties>
+    <families-expanded root="0">
+        <family expanded="1" name="FallenObjects" />
+        <family expanded="1" name="Map" />
+        <family expanded="0" name="Rocket" />
+        <family expanded="1" name="Powerups" />
+    </families-expanded>
+    <folders-expanded>
+        <folder expanded="1" path="object-folder/" />
+        <folder expanded="1" path="object-folder/scenario-boxes/" />
+        <folder expanded="1" path="layout-folder/" />
+        <folder expanded="1" path="event-folder/" />
+        <folder expanded="1" path="file-folder/" />
+        <folder expanded="1" path="sound-folder/" />
+        <folder expanded="1" path="music-folder/" />
+        <folder expanded="0" path="file-folder/Icons/" />
+        <folder expanded="1" path="animation-folder/Player/" />
+        <folder expanded="1" path="animation-folder/Posto/" />
+        <folder expanded="1" path="animation-folder/Enemy/" />
+        <folder expanded="1" path="animation-folder/MissilePlayer/" />
+        <folder expanded="1" path="animation-folder/ExplosionUnits/" />
+        <folder expanded="1" path="animation-folder/ExplosionPlayer/" />
+        <folder expanded="1" path="animation-folder/Laser/" />
+        <folder expanded="1" path="animation-folder/SpecialShot/" />
+        <folder expanded="1" path="animation-folder/Phantom/" />
+        <folder expanded="1" path="animation-folder/Viper/" />
+        <folder expanded="1" path="animation-folder/MissileViper/" />
+        <folder expanded="1" path="animation-folder/ExplosionViper/" />
+        <folder expanded="1" path="animation-folder/letraG/" />
+        <folder expanded="1" path="animation-folder/letraA/" />
+        <folder expanded="1" path="animation-folder/letraM/" />
+        <folder expanded="1" path="animation-folder/letraE/" />
+        <folder expanded="1" path="animation-folder/letraO/" />
+        <folder expanded="1" path="animation-folder/letraV/" />
+        <folder expanded="1" path="animation-folder/letraE2/" />
+        <folder expanded="1" path="animation-folder/letraR/" />
+        <folder expanded="1" path="animation-folder/Enemy2/" />
+        <folder expanded="1" path="animation-folder/Sprite/" />
+        <folder expanded="1" path="animation-folder/Sprite2/" />
+        <folder expanded="1" path="animation-folder/Sprite3/" />
+        <folder expanded="1" path="animation-folder/Sprite4/" />
+        <folder expanded="1" path="animation-folder/Sprite5/" />
+        <folder expanded="1" path="animation-folder/Sprite6/" />
+        <folder expanded="1" path="animation-folder/Sprite7/" />
+        <folder expanded="1" path="animation-folder/Sprite8/" />
+        <folder expanded="1" path="animation-folder/Sprite9/" />
+        <folder expanded="1" path="animation-folder/Sprite10/" />
+        <folder expanded="1" path="animation-folder/Sprite11/" />
+        <folder expanded="1" path="animation-folder/Sprite12/" />
+        <folder expanded="1" path="animation-folder/Sprite13/" />
+        <folder expanded="1" path="animation-folder/Sprite14/" />
+        <folder expanded="1" path="animation-folder/Sprite15/" />
+        <folder expanded="1" path="animation-folder/Sprite16/" />
+        <folder expanded="1" path="animation-folder/Sprite17/" />
+        <folder expanded="1" path="animation-folder/Sprite18/" />
+        <folder expanded="1" path="animation-folder/Sprite19/" />
+        <folder expanded="1" path="animation-folder/txtPlay/" />
+        <folder expanded="1" path="animation-folder/txtInstruction/" />
+        <folder expanded="1" path="animation-folder/txtExit/" />
+        <folder expanded="1" path="animation-folder/back/" />
+    </folders-expanded>
+</c2uistate>

@@ -1,0 +1,874 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>EventGame</name>
+    <events>
+        <variable constant="0" name="combustivel" sid="2325005766521739" static="0" type="number">9000</variable>
+        <variable constant="0" name="emJogo" sid="4524361647722962" static="0" type="number">1</variable>
+        <variable constant="1" name="DEFAULT_SPEED" sid="7325383260539293" static="0" type="number">2</variable>
+        <variable constant="0" name="speed" sid="300110158571929" static="0" type="number">2</variable>
+        <event-group description="" sid="4127963586800281" title="Fallen">
+            <sub-events>
+                <event-block sid="9207563269786276">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="5568325510925915" type="System" />
+                        <condition id="-9" name="Is visible" sid="6108686907695577" type="Player" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="7347588955057566" type="TanqueTxt">
+                            <param id="0" name="Text">&quot;Tanque &quot; &amp;  combustivel</param>
+                        </action>
+                        <action id="0" name="Set text" sid="4309221177761557" type="MissilesTxt">
+                            <param id="0" name="Text">&quot;Missiles: &quot; &amp; Player.remainingSpecialAttack</param>
+                        </action>
+                        <action disabled="1" id="-9" name="Set value" sid="9094590628153794" type="System">
+                            <param id="0" name="Variable">combustivel</param>
+                            <param id="1" name="Value">combustivel - 0.5</param>
+                        </action>
+                        <action id="-2" name="Set Y" sid="26213957230623" type="FallenObjects">
+                            <param id="0" name="Y">Self.Y + (speed * FallenObjects.fallenSpeedFactor)</param>
+                        </action>
+                        <action id="-2" name="Set Y" sid="2187954650950389" type="Map">
+                            <param id="0" name="Y">Map.Y + speed</param>
+                        </action>
+                        <action id="0" name="Set text" sid="5426205266374337" type="PhantomEffectTxt">
+                            <param id="0" name="Text">&quot;Phantom &quot; &amp; Player.phantomEffects</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="1521529251647695" title="NormalMap">
+            <sub-events>
+                <event-block sid="9531231736778145">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="9470805309729258" type="Player">
+                            <param id="0" name="Object">MapCollision</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="2556926350987052" type="Player" />
+                    </actions>
+                </event-block>
+                <event-block sid="5576217072193928">
+                    <conditions>
+                        <condition id="-18" name="On created" sid="3935904316402252" type="MissilePlayer" />
+                    </conditions>
+                    <actions>
+                        <action id="-8" name="Set angle" sid="8242743298091569" type="MissilePlayer">
+                            <param id="0" name="Angle">random(180, 360)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="5325759449713043">
+                    <conditions>
+                        <condition behavior="LineOfSight" id="0" name="Has LOS to object" sid="614978083253114" type="MissilePlayer">
+                            <param id="0" name="Object">Enemy</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-22" name="Set angle toward position" sid="8816484317421981" type="MissilePlayer">
+                            <param id="0" name="X">Enemy.X</param>
+                            <param id="1" name="Y">Enemy.Y</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="6661244368015306">
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" sid="6886307103598429" type="System">
+                            <param id="0" name="Interval (seconds)">2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Create object" sid="5476360023906171" type="System">
+                            <param id="0" name="Object to create">Powerups</param>
+                            <param id="1" name="Layer">&quot;Objects&quot;</param>
+                            <param id="2" name="X">random(230, 550)</param>
+                            <param id="3" name="Y">-Powerups.Height</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-block sid="4388996671020613">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="5520996210553026" type="System" />
+            </conditions>
+            <actions>
+                <action behavior="Physics" id="12" name="Set world gravity" sid="4364894454008126" type="Player">
+                    <param id="0" name="Gravity">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="1665335492960044">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="359043924714841" type="System">
+                    <param id="0" name="Variable">combustivel</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="1363532795505349" type="Player" />
+                <action id="-9" name="Set value" sid="9432352897562802" type="System">
+                    <param id="0" name="Variable">combustivel</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="3790005060802086">
+            <conditions>
+                <condition id="1" name="Is overlapping another object" sid="7638603760853414" type="Player">
+                    <param id="0" name="Object">Posto</param>
+                </condition>
+                <condition id="-1" name="Every tick" sid="436378538919576" type="System" />
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="7159323556876734" type="System">
+                    <param id="0" name="Variable">combustivel</param>
+                    <param id="1" name="Value">combustivel + 2</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="1235913164183942">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="9592638911131488" type="Player">
+                    <param id="0" name="Object">Enemy</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="7585595010807138" type="Enemy" />
+                <action id="-9" name="Destroy" sid="5753657907473727" type="Player" />
+            </actions>
+        </event-block>
+        <event-block sid="4749189590363101">
+            <conditions>
+                <condition id="-8" name="Compare two values" sid="5227496441814484" type="System">
+                    <param id="0" name="First value">Enemy.Sine.Value</param>
+                    <param id="1" name="Comparison">5</param>
+                    <param id="2" name="Second value">Enemy.Sine.Magnitude - 5</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="7" name="Set mirrored" sid="6791910344277682" type="Enemy">
+                    <param id="0" name="State">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="5352462937882926">
+            <conditions>
+                <condition id="-8" name="Compare two values" sid="9188078343355572" type="System">
+                    <param id="0" name="First value">Enemy.Sine.Value</param>
+                    <param id="1" name="Comparison">3</param>
+                    <param id="2" name="Second value">-Enemy.Sine.Magnitude + 5</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="7" name="Set mirrored" sid="250954041368288" type="Enemy">
+                    <param id="0" name="State">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="3727474154966872">
+            <conditions>
+                <condition id="-19" name="On destroyed" sid="172843627666237" type="Player" />
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="1567734867899752" type="ExplosionPlayer">
+                    <param id="0" name="Animation">&quot;Default&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+                <action id="-4" name="Set position to another object" sid="239953752252621" type="ExplosionPlayer">
+                    <param id="0" name="Object">Player</param>
+                    <param id="1" name="Image point (optional)">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="2271527059455594" type="ExplosionPlayer">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-9" name="Set value" sid="4818078541109489" type="System">
+                    <param id="0" name="Variable">emJogo</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="1625007244715221" type="TenteNovamenteTxt">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="9159284939795419" type="letraG">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="8734734755150723" type="letraA">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="3830929117321508" type="letraM">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="1832790834540393" type="letraE">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="4233251840795437" type="letraO">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="3679343054600316" type="letraV">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="8489827967654498" type="letraE2">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="2261033557576337" type="letraR">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="9075108248891146">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="4609330791891878" type="Enemy">
+                    <param id="0" name="Object">Rocket</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="216296040042217" type="Enemy" />
+                <action id="-9" name="Destroy" sid="7942786661485641" type="Rocket" />
+                <action id="-3" name="Create object" sid="117014299457049" type="System">
+                    <param id="0" name="Object to create">ExplosionUnits</param>
+                    <param id="1" name="Layer">&quot;Objects&quot;</param>
+                    <param id="2" name="X">Enemy.X</param>
+                    <param id="3" name="Y">Enemy.Y</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="3213543649531641">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="204515429295687" type="Laser">
+                    <param id="0" name="Object">MapCollision</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="8882522753928745" type="Laser" />
+            </actions>
+        </event-block>
+        <event-block sid="5536798917261359">
+            <conditions>
+                <condition id="0" name="On clicked" sid="5645542761878466" type="Button" />
+            </conditions>
+            <actions>
+                <action id="-26" name="Restart layout" sid="8978809876748185" type="System" />
+                <action id="-21" name="Reset global variables" sid="135456169862603" type="System" />
+            </actions>
+        </event-block>
+        <event-block sid="1931838721149207">
+            <conditions>
+                <condition id="2" name="Key is down" sid="7621964323121505" type="Keyboard">
+                    <param id="0" name="Key">83 (S)</param>
+                </condition>
+                <condition id="-6" name="Every X seconds" sid="8790218601196561" type="System">
+                    <param id="0" name="Interval (seconds)">0.2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Create object" sid="8688928155520005" type="System">
+                    <param id="0" name="Object to create">Laser</param>
+                    <param id="1" name="Layer">&quot;Objects&quot;</param>
+                    <param id="2" name="X">Player.ImagePointX(&quot;Front&quot;)</param>
+                    <param id="3" name="Y">Player.ImagePointY(&quot;Front&quot;)</param>
+                </action>
+                <action id="-8" name="Set angle" sid="5997000552853673" type="Laser">
+                    <param id="0" name="Angle">Player.Angle</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="2852310075035646">
+            <conditions>
+                <condition id="2" name="Key is down" sid="9610391442149619" type="Keyboard">
+                    <param id="0" name="Key">38 (Up arrow)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="1736488810076905" type="System">
+                    <param id="0" name="Variable">speed</param>
+                    <param id="1" name="Value">DEFAULT_SPEED * 2</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="9611397995516546">
+            <conditions>
+                <condition id="-22" name="Else" sid="4022073692502021" type="System" />
+                <condition id="2" name="Key is down" sid="3848383827038565" type="Keyboard">
+                    <param id="0" name="Key">40 (Down arrow)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="2621391802023692" type="System">
+                    <param id="0" name="Variable">speed</param>
+                    <param id="1" name="Value">DEFAULT_SPEED / 2</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="6586888415460129">
+            <conditions>
+                <condition id="-22" name="Else" sid="8918691186072907" type="System" />
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="2664265816545411" type="System">
+                    <param id="0" name="Variable">speed</param>
+                    <param id="1" name="Value">DEFAULT_SPEED</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="6867673937923708">
+            <conditions>
+                <condition id="3" name="On key released" sid="5892661913838159" type="Keyboard">
+                    <param id="0" name="Key">65 (A)</param>
+                </condition>
+                <condition id="-8" name="Compare two values" sid="8799418844567238" type="System">
+                    <param id="0" name="First value">Player.remainingSpecialAttack</param>
+                    <param id="1" name="Comparison">4</param>
+                    <param id="2" name="Second value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Create object" sid="1331476654802508" type="System">
+                    <param id="0" name="Object to create">MissilePlayer</param>
+                    <param id="1" name="Layer">2</param>
+                    <param id="2" name="X">Player.ImagePointX(&quot;Front&quot;)</param>
+                    <param id="3" name="Y">Player.ImagePointY(&quot;Front&quot;)</param>
+                </action>
+                <action id="-12" name="Subtract from" sid="2157382443205215" type="Player">
+                    <param id="0" name="Instance variable">remainingSpecialAttack</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="2594120087684431">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="6195550198601729" type="System">
+                    <param id="0" name="Interval (seconds)">0.2</param>
+                </condition>
+                <condition id="-11" name="For Each" sid="8423890997360627" type="System">
+                    <param id="0" name="Object">MissilePlayer</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Bullet" id="1" name="Set acceleration" sid="5375102685090437" type="MissilePlayer">
+                    <param id="0" name="Acceleration">MissilePlayer.Bullet.Acceleration + 10</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="6061826711604349">
+            <conditions>
+                <condition id="4" name="On finished" sid="2164997663520446" type="ExplosionPlayer">
+                    <param id="0" name="Animation">&quot;Default&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-15" name="Set visible" sid="6837439427379514" type="ExplosionPlayer">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="6422480044505829">
+            <conditions>
+                <condition id="1" name="Is overlapping another object" sid="4562584974355058" type="Player">
+                    <param id="0" name="Object">SpecialShot</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-10" name="Set value" sid="3242072999849317" type="Player">
+                    <param id="0" name="Instance variable">remainingSpecialAttack</param>
+                    <param id="1" name="Value">Player.remainingSpecialAttack + 3</param>
+                </action>
+                <action id="-9" name="Destroy" sid="8538599692655668" type="SpecialShot" />
+            </actions>
+        </event-block>
+        <event-group description="" sid="5713494329565344" title="Phantom Effect">
+            <sub-events>
+                <event-block sid="234094237843526">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="1330325419365404" type="Player">
+                            <param id="0" name="Object">Phantom</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="8432187288787039" type="Phantom" />
+                        <action id="-11" name="Add to" sid="6183820690036195" type="Player">
+                            <param id="0" name="Instance variable">phantomEffects</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="7665795602425301">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="4171573252907675" type="Player">
+                            <param id="0" name="Instance variable">remainingSecondsPhantomEffect</param>
+                            <param id="1" name="Comparison">5</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                        <condition id="-7" name="Compare instance variable" sid="7902870693038483" type="Player">
+                            <param id="0" name="Instance variable">remainingSecondsPhantomEffect</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                        <condition id="-6" name="Every X seconds" sid="4889225830327446" type="System">
+                            <param id="0" name="Interval (seconds)">1.0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-12" name="Subtract from" sid="7148196753175478" type="Player">
+                            <param id="0" name="Instance variable">remainingSecondsPhantomEffect</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-16" name="Set opacity" sid="9244321764601055" type="Player">
+                            <param id="0" name="Opacity">50</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="1097428959945365">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="6281527061245511" type="Player">
+                            <param id="0" name="Instance variable">remainingSecondsPhantomEffect</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Value">3</param>
+                        </condition>
+                        <condition id="-7" name="Compare instance variable" sid="1456310975624384" type="Player">
+                            <param id="0" name="Instance variable">remainingSecondsPhantomEffect</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                        <condition id="-6" name="Every X seconds" sid="187381934913896" type="System">
+                            <param id="0" name="Interval (seconds)">0.2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="7040905119138021" type="Function">
+                            <param id="0" name="Name">&quot;blinkPlayer&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="4309359666681281">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="3888306667588451" type="Player">
+                            <param id="0" name="Instance variable">remainingSecondsPhantomEffect</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                        <condition id="-7" name="Compare instance variable" sid="8545042780964154" type="Player">
+                            <param id="0" name="Instance variable">remainingSecondsPhantomEffect</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                        <condition id="-6" name="Every X seconds" sid="5003375270400238" type="System">
+                            <param id="0" name="Interval (seconds)">0.1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="8043014771210992" type="Function">
+                            <param id="0" name="Name">&quot;blinkPlayer&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="7539164774267767">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="850751064516646" type="Player">
+                            <param id="0" name="Instance variable">remainingSecondsPhantomEffect</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Set opacity" sid="2565191328196933" type="Player">
+                            <param id="0" name="Opacity">100</param>
+                        </action>
+                        <action id="11" name="Set collisions enabled" sid="4083414762666506" type="Player">
+                            <param id="0" name="Collisions">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="7568767062235197">
+                    <conditions>
+                        <condition id="3" name="On key released" sid="520325384176313" type="Keyboard">
+                            <param id="0" name="Key">68 (D)</param>
+                        </condition>
+                        <condition id="-7" name="Compare instance variable" sid="8112244887764519" type="Player">
+                            <param id="0" name="Instance variable">phantomEffects</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="5047289559051636" type="Player">
+                            <param id="0" name="Instance variable">remainingSecondsPhantomEffect</param>
+                            <param id="1" name="Value">5</param>
+                        </action>
+                        <action id="-12" name="Subtract from" sid="3164305266120123" type="Player">
+                            <param id="0" name="Instance variable">phantomEffects</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="11" name="Set collisions enabled" sid="6956815585125269" type="Player">
+                            <param id="0" name="Collisions">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="5026330732361006">
+                    <conditions>
+                        <condition id="0" name="On function" sid="1997621649637818" type="Function">
+                            <param id="0" name="Name">&quot;blinkPlayer&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="8330897217228817">
+                            <conditions>
+                                <condition id="-10" name="Compare opacity" sid="6010565768347308" type="Player">
+                                    <param id="0" name="Comparison">2</param>
+                                    <param id="1" name="Opacity">100</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-16" name="Set opacity" sid="4871239573987683" type="Player">
+                                    <param id="0" name="Opacity">100</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="879229887289104">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="3714001629871615" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-16" name="Set opacity" sid="6286372754746597" type="Player">
+                                    <param id="0" name="Opacity">50</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-block sid="626197886363564">
+            <conditions>
+                <condition id="-2" name="Compare Y" sid="2787145473917544" type="MapCollision">
+                    <param id="0" name="Comparison">4</param>
+                    <param id="1" name="Y co-ordinate">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="LeftRight" id="8" name="Set enabled" sid="4862426567064714" type="Player">
+                    <param id="0" name="State">0</param>
+                </action>
+                <action behavior="8Direction" id="8" name="Set enabled" sid="6070771460067348" type="Player">
+                    <param id="0" name="State">1</param>
+                </action>
+                <action id="-2" name="Set Y" sid="8889627164214449" type="MapCollision">
+                    <param id="0" name="Y">0</param>
+                </action>
+                <action id="-12" name="Set group active" sid="9827124133578091" type="System">
+                    <param id="0" name="Group name">&quot;Fallen&quot;</param>
+                    <param id="1" name="State">0</param>
+                </action>
+                <action id="-12" name="Set group active" sid="9118442893492513" type="System">
+                    <param id="0" name="Group name">&quot;NormalMap&quot;</param>
+                    <param id="1" name="State">0</param>
+                </action>
+                <action id="-12" name="Set group active" sid="2996065852493249" type="System">
+                    <param id="0" name="Group name">&quot;FinalMap&quot;</param>
+                    <param id="1" name="State">1</param>
+                </action>
+                <action id="-3" name="Set position" sid="9575555267644054" type="Viper">
+                    <param id="0" name="X">LayoutWidth / 2</param>
+                    <param id="1" name="Y">LayoutHeight / 4</param>
+                </action>
+                <action id="1" name="Set visible" sid="3719858328487293" type="HealthBarPlayer">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="1" name="Set visible" sid="769255631144526" type="HealthBarViper">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="4401305488349015" type="PlayerTxt">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="7948618139613571" type="ViperTxt">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="1767373109391925" type="MissilesTxt">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="1652158314906301" type="TanqueTxt">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="695734998664864" type="PhantomEffectTxt">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action behavior="Solid" id="0" name="Set enabled" sid="6810714773726459" type="MapCollision">
+                    <param id="0" name="State">0</param>
+                </action>
+                <action behavior="Physics" id="27" name="Set enabled" sid="942607307998152" type="MapCollision">
+                    <param id="0" name="Mode">1</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="6110594251658001">
+                    <conditions>
+                        <condition id="-11" name="For Each" sid="406643751801101" type="System">
+                            <param id="0" name="Object">FallenObjects</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="7569286796514222" type="FallenObjects" />
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-group description="" inactive="1" sid="7548134424130523" title="FinalMap">
+            <sub-events>
+                <event-block sid="8467828672549933">
+                    <conditions>
+                        <condition behavior="LineOfSight" id="0" name="Has LOS to object" sid="2372010913420854" type="Viper">
+                            <param id="0" name="Object">Player</param>
+                        </condition>
+                        <condition id="-6" name="Every X seconds" sid="9927081566427119" type="System">
+                            <param id="0" name="Interval (seconds)">2</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="336553148787928">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="6866838093082358" type="System">
+                                    <param id="0" name="First value">random(0, 100)</param>
+                                    <param id="1" name="Comparison">3</param>
+                                    <param id="2" name="Second value">60</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Physics" id="4" name="Apply impulse towards position" sid="1320364424248367" type="Viper">
+                                    <param id="0" name="Impulse">10</param>
+                                    <param id="1" name="X">-Player.X</param>
+                                    <param id="2" name="Y">-Player.Y</param>
+                                    <param id="3" name="Image point">0</param>
+                                </action>
+                                <action id="-3" name="Create object" sid="8547842925711767" type="System">
+                                    <param id="0" name="Object to create">MissileViper</param>
+                                    <param id="1" name="Layer">0</param>
+                                    <param id="2" name="X">Viper.X</param>
+                                    <param id="3" name="Y">Viper.Y</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="1956393094674822">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="7758802674026407" type="System" />
+                            </conditions>
+                            <actions>
+                                <action behavior="Physics" id="4" name="Apply impulse towards position" sid="5336329865060471" type="Viper">
+                                    <param id="0" name="Impulse">10</param>
+                                    <param id="1" name="X">Player.X</param>
+                                    <param id="2" name="Y">Player.Y</param>
+                                    <param id="3" name="Image point">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="2747419172572842">
+                    <conditions>
+                        <condition id="-18" name="On created" sid="7119123367348199" type="MissileViper" />
+                    </conditions>
+                    <actions>
+                        <action id="-22" name="Set angle toward position" sid="5398708285322858" type="MissileViper">
+                            <param id="0" name="X">Player.X</param>
+                            <param id="1" name="Y">Player.Y</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="3514431143939993">
+                    <conditions>
+                        <condition behavior="LineOfSight" id="0" name="Has LOS to object" sid="2902756049806099" type="MissileViper">
+                            <param id="0" name="Object">Player</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-22" name="Set angle toward position" sid="2783258022744636" type="MissileViper">
+                            <param id="0" name="X">Player.X</param>
+                            <param id="1" name="Y">Player.Y</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="165361518365673">
+                    <conditions>
+                        <condition id="-18" name="On created" sid="4078960557595038" type="MissilePlayer" />
+                    </conditions>
+                    <actions>
+                        <action id="-8" name="Set angle" sid="3360571823190907" type="MissilePlayer">
+                            <param id="0" name="Angle">Player.Angle</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="3939219384443785">
+                    <conditions>
+                        <condition behavior="LineOfSight" id="0" name="Has LOS to object" sid="2418371903877291" type="MissilePlayer">
+                            <param id="0" name="Object">Viper</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-22" name="Set angle toward position" sid="9383711698425142" type="MissilePlayer">
+                            <param id="0" name="X">Viper.X</param>
+                            <param id="1" name="Y">Viper.Y</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="5057987304908196">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="1747670415277984" type="MissilePlayer">
+                            <param id="0" name="Object">Viper</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-12" name="Subtract from" sid="4053539069983229" type="Viper">
+                            <param id="0" name="Instance variable">health</param>
+                            <param id="1" name="Value">10</param>
+                        </action>
+                        <action id="-9" name="Destroy" sid="6208048703885582" type="MissilePlayer" />
+                    </actions>
+                </event-block>
+                <event-block sid="479553228499484">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="3808664010630754" type="Laser">
+                            <param id="0" name="Object">Viper</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-12" name="Subtract from" sid="6214751532578808" type="Viper">
+                            <param id="0" name="Instance variable">health</param>
+                            <param id="1" name="Value">5</param>
+                        </action>
+                        <action id="-9" name="Destroy" sid="1059514588785333" type="Laser" />
+                    </actions>
+                </event-block>
+                <event-block sid="3238856378955879">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="6790858725931066" type="MissileViper">
+                            <param id="0" name="Object">Player</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-12" name="Subtract from" sid="5152149674761378" type="Player">
+                            <param id="0" name="Instance variable">health</param>
+                            <param id="1" name="Value">10</param>
+                        </action>
+                        <action id="-9" name="Destroy" sid="2720567982870616" type="MissileViper" />
+                    </actions>
+                </event-block>
+                <event-block sid="1732271571396642">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="2203355560949045" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="3" name="Set progress" sid="3939194156672276" type="HealthBarPlayer">
+                            <param id="0" name="Value">Player.health</param>
+                        </action>
+                        <action id="3" name="Set progress" sid="6155996141027725" type="HealthBarViper">
+                            <param id="0" name="Value">Viper.health</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="8532487310197337">
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" sid="8269198380252364" type="System">
+                            <param id="0" name="Interval (seconds)">5</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Rotate" id="0" name="Set speed" sid="2344121144444661" type="Viper">
+                            <param id="0" name="Speed">-Viper.Rotate.Speed</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="8054615046318498">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="5820677345435785" type="Player">
+                            <param id="0" name="Instance variable">health</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="4519807271483836" type="Player" />
+                    </actions>
+                </event-block>
+                <event-block sid="9699377943755882">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="1041408041847173" type="Viper">
+                            <param id="0" name="Instance variable">health</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="6593769040113769" type="Viper" />
+                    </actions>
+                </event-block>
+                <event-block sid="3921076093013002">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="6420598464541261" type="Player">
+                            <param id="0" name="Object">Viper</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-12" name="Subtract from" sid="5214355927907686" type="Player">
+                            <param id="0" name="Instance variable">health</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="9319921189875558">
+                    <conditions>
+                        <condition id="-19" name="On destroyed" sid="7465282165708687" type="Viper" />
+                    </conditions>
+                    <actions>
+                        <action id="-4" name="Set position to another object" sid="5539271321072925" type="ExplosionViper">
+                            <param id="0" name="Object">Viper</param>
+                            <param id="1" name="Image point (optional)">0</param>
+                        </action>
+                        <action id="4" name="Set animation" sid="5612907704349651" type="ExplosionViper">
+                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="7692087584386216" type="ExplosionViper">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-2" name="Go to layout" sid="1436548180893446" type="System">
+                            <param id="0" name="Layout">Congratulation</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="2326689660289792">
+                    <conditions>
+                        <condition id="4" name="On finished" sid="3065448783377758" type="ExplosionViper">
+                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" sid="1661658541899455" type="ExplosionViper">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-block sid="2272711951348245">
+            <conditions>
+                <condition id="0" name="On key pressed" sid="3465088378063329" type="Keyboard">
+                    <param id="0" name="Key">32 (Space)</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="7318074248939574" type="System">
+                    <param id="0" name="Variable">emJogo</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-26" name="Restart layout" sid="8186512486958171" type="System" />
+                <action id="-21" name="Reset global variables" sid="6947274790671396" type="System" />
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>EventMenu</name>
+    <events>
+        <event-block sid="9993153402438667">
+            <conditions>
+                <condition id="6" name="On object clicked" sid="2337860244508472" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                    <param id="2" name="Object clicked">txtPlay</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" sid="892059949763853" type="System">
+                    <param id="0" name="Layout">Game</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="5087842706710137">
+            <conditions>
+                <condition id="6" name="On object clicked" sid="2419173513359506" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                    <param id="2" name="Object clicked">txtInstruction</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" sid="6662214114015429" type="System">
+                    <param id="0" name="Layout">Help</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
