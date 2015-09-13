@@ -102,21 +102,21 @@
         </event-block>
         <event-block sid="1665335492960044">
             <conditions>
-                <condition id="-14" name="Compare variable" sid="359043924714841" type="System">
+                <condition disabled="1" id="-14" name="Compare variable" sid="359043924714841" type="System">
                     <param id="0" name="Variable">combustivel</param>
                     <param id="1" name="Comparison">0</param>
                     <param id="2" name="Value">0</param>
                 </condition>
             </conditions>
             <actions>
-                <action id="-9" name="Destroy" sid="1363532795505349" type="Player" />
-                <action id="-9" name="Set value" sid="9432352897562802" type="System">
+                <action disabled="1" id="-9" name="Destroy" sid="1363532795505349" type="Player" />
+                <action disabled="1" id="-9" name="Set value" sid="9432352897562802" type="System">
                     <param id="0" name="Variable">combustivel</param>
                     <param id="1" name="Value">0</param>
                 </action>
             </actions>
         </event-block>
-        <event-block sid="3790005060802086">
+        <event-block disabled="1" sid="3790005060802086">
             <conditions>
                 <condition id="1" name="Is overlapping another object" sid="7638603760853414" type="Player">
                     <param id="0" name="Object">Posto</param>
@@ -868,6 +868,38 @@
             <actions>
                 <action id="-26" name="Restart layout" sid="8186512486958171" type="System" />
                 <action id="-21" name="Reset global variables" sid="6947274790671396" type="System" />
+            </actions>
+        </event-block>
+        <event-block sid="6801312468892012">
+            <conditions>
+                <condition id="-2" name="Compare Y" sid="9058645034645912" type="MapCollision">
+                    <param id="0" name="Comparison">4</param>
+                    <param id="1" name="Y co-ordinate">-10</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="11" name="Set collisions enabled" sid="7743112444703404" type="Player">
+                    <param id="0" name="Collisions">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="7051751716573935">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="788324818442921" type="System" />
+            </conditions>
+            <actions>
+                <action id="-12" name="Set group active" sid="5058380563919221" type="System">
+                    <param id="0" name="Group name">&quot;Fallen&quot;</param>
+                    <param id="1" name="State">1</param>
+                </action>
+                <action id="-12" name="Set group active" sid="7787257567469657" type="System">
+                    <param id="0" name="Group name">&quot;NormalMap&quot;</param>
+                    <param id="1" name="State">1</param>
+                </action>
+                <action id="-12" name="Set group active" sid="3145071652667802" type="System">
+                    <param id="0" name="Group name">&quot;FinalMap&quot;</param>
+                    <param id="1" name="State">0</param>
+                </action>
             </actions>
         </event-block>
     </events>

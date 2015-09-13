@@ -11,7 +11,11 @@
                     <param id="2" name="Object clicked">back_menu</param>
                 </condition>
             </conditions>
-            <actions />
+            <actions>
+                <action id="-2" name="Go to layout" sid="2215089323733559" type="System">
+                    <param id="0" name="Layout">Menu</param>
+                </action>
+            </actions>
         </event-block>
     </events>
 </c2eventsheet>
